@@ -1,0 +1,34 @@
+---
+import { LANG } from '@/i18n';
+import { translatePath } from '@/i18n/path.utils';
+
+const { url, currentLocale } = Astro;
+---
+
+<div class='group relative rounded-md bg-black/20 hover:bg-black/50'>
+  <button
+    type='button'
+    class='inline-flex items-center justify-center px-2'
+    aria-expanded='true'
+    aria-haspopup='true'
+    >{LANG[(currentLocale as keyof typeof LANG) ?? 'es']}</button
+  >
+  <ul class='absolute left-0 top-full hidden w-full flex-col group-hover:flex'>
+    {
+      Object.entries(LANG)
+        .filter(([k, v]) => k !== currentLocale)
+        .map(([k, v]) => (
+          <li class='inline-flex w-full'>
+            <a
+              class='inline-flex w-full py-1'
+              href={translatePath(url.pathname, k, currentLocale)}
+            >
+              <span class='w-full rounded-md bg-black/20 px-2 hover:bg-black/50'>
+                {v}
+              </span>
+            </a>
+          </li>
+        ))
+    }
+  </ul>
+</div>

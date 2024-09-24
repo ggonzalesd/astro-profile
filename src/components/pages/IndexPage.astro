@@ -1,0 +1,12 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+import { getI18N } from '@/i18n';
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<Layout title={i18n.home_title}>
+  <p>{i18n.app_header_title}</p>
+</Layout>
