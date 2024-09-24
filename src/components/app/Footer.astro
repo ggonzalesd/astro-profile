@@ -1,15 +1,31 @@
 ---
-import MiddleSection from '../MiddleSection.astro';
+import { getI18N } from '@/i18n';
+import DiagonalSection from '../DiagonalSection.astro';
 import SvgLinkedin from '@/components/icons/SvgLinkedin.astro';
 import SvgGithub from '@/components/icons/SvgGithub.astro';
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+
+const routes = [
+  {
+    route: i18n.app_nav_route_home,
+    display: i18n.app_nav_names_home,
+  },
+  {
+    route: i18n.app_nav_route_projects,
+    display: i18n.app_nav_names_projects,
+  },
+];
 ---
 
 <footer class='text-white'>
-  <MiddleSection type='line-left' class='text-sky-700' />
+  <DiagonalSection class='text-sky-700' />
   <div class='bg-sky-700 pb-4'>
-    <section class='mx-auto flex w-full max-w-screen-lg flex-col px-2'>
+    <section class='mx-auto flex w-full max-w-screen-lg flex-col gap-4 px-2'>
       <!-- More info -->
-      <div class='flex flex-col justify-between md:flex-row'>
+      <div class='flex flex-col justify-between gap-8 md:flex-row'>
+        <!-- Left -->
         <div>
           <div class='flex justify-center p-2 text-lg font-bold'>
             <span>Logo</span>
@@ -33,10 +49,29 @@ import SvgGithub from '@/components/icons/SvgGithub.astro';
             </a>
           </div>
         </div>
-        <span>x</span>
+        <!-- Right -->
+        <div
+          class='flex flex-col items-center justify-center gap-4 md:flex-row'
+        >
+          <div class='flex flex-col items-center gap-2 md:items-start'>
+            <span class='text-lg font-bold uppercase'
+              >{i18n.app_footer_site_map}</span
+            >
+            {
+              routes.map(({ route, display }) => (
+                <a class='text-sky-100 hover:underline' href={route}>
+                  {display}
+                </a>
+              ))
+            }
+          </div>
+        </div>
       </div>
       <!-- All Rights -->
-      <div></div>
+      <div class='h-[1px] w-full rounded-md bg-sky-600'></div>
+      <div>
+        <span>Grober Gonzales 2024</span>
+      </div>
     </section>
   </div>
 </footer>

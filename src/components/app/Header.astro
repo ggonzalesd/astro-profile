@@ -2,6 +2,8 @@
 import { getI18N } from '@/i18n';
 
 import LanguageSelector from './LanguageSelector.astro';
+import SvgMenu from '../icons/SvgMenu.astro';
+import SvgClose from '../icons/SvgClose.astro';
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
@@ -26,15 +28,17 @@ const routes = [
   <div
     class='mx-auto flex h-full max-w-screen-lg items-center justify-between gap-4 px-2 backdrop-blur-sm sm:rounded-md'
   >
-    <span>X</span>
+    <span>Logo</span>
 
     <nav
       id='header-tools'
-      class='fixed left-0 top-0 z-20 flex h-dvh w-full -translate-y-full flex-col items-center gap-2 bg-black/80 transition-transform duration-150 target:translate-y-0 md:static md:h-full md:translate-y-0 md:flex-row md:bg-transparent'
+      class='fixed left-0 top-0 z-20 flex h-dvh w-full -translate-y-full flex-col items-center gap-2 bg-black/90 transition-transform duration-150 target:translate-y-0 md:static md:h-full md:translate-y-0 md:flex-row md:bg-transparent'
     >
       <div class='flex w-full justify-between p-1 md:hidden'>
-        <span class='p-1'>X</span>
-        <a href='#header-main' class='p-1'>Close</a>
+        <span class='p-1'>Logo</span>
+        <a href='#header-main' class='p-1'>
+          <SvgClose />
+        </a>
       </div>
       <div
         class='flex flex-grow flex-col items-center justify-center gap-6 text-xl md:flex-grow-0 md:flex-row md:gap-4 md:text-sm'
@@ -49,20 +53,23 @@ const routes = [
         <LanguageSelector />
       </div>
     </nav>
-    <a href='#header-tools' class='inline-flex md:hidden'>Menu</a>
+    <a href='#header-tools' class='inline-flex md:hidden'>
+      <SvgMenu />
+    </a>
   </div>
 </header>
 
 <style scoped>
   header > div {
     animation: header-bg-change linear forwards;
+    background-color: #0002;
     animation-timeline: scroll();
-    animation-range: normal 25%;
+    animation-range: 5% 25%;
   }
 
   @keyframes header-bg-change {
     from {
-      background-color: #0001;
+      background-color: #0002;
     }
     to {
       background-color: #0006;

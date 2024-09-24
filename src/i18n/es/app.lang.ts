@@ -6,6 +6,7 @@ const esAppLang: typeof enAppLang = {
   app_nav_route_home: '/',
   app_nav_names_projects: 'Proyectos',
   app_nav_route_projects: '/proyectos',
+  app_footer_site_map: 'Mapa Web',
 };
 
 export default esAppLang;

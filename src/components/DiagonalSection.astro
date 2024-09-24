@@ -1,0 +1,18 @@
+---
+import cn from 'classnames';
+
+interface Props {
+  class?: string | undefined;
+}
+
+const { class: classname } = Astro.props;
+---
+
+<svg
+  class={cn(classname, 'w-full')}
+  xmlns='http://www.w3.org/2000/svg'
+  viewBox='0 0 1440 100'
+>
+  <path fill='currentColor' fill-opacity='1' d='M0,90,0,120,1440,120,1440,10Z'
+  ></path>
+</svg>

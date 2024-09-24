@@ -4,4 +4,5 @@ export default {
   app_nav_route_home: '/en',
   app_nav_names_projects: 'Projects',
   app_nav_route_projects: '/en/projects',
+  app_footer_site_map: 'Site Map',
 };
