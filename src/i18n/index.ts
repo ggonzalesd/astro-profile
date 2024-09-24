@@ -1,9 +1,12 @@
 import esLang from './es';
 import enLang from './en';
 
+import SvgSpain from '@/components/icons/SvgSpain.astro';
+import SvgEEUU from '@/components/icons/SvgEEUU.astro';
+
 export const LANG = {
-  en: 'English',
-  es: 'Español',
+  en: { display: 'English', flag: SvgEEUU },
+  es: { display: 'Español', flag: SvgSpain },
 };
 
 export const getI18N = ({

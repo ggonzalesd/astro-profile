@@ -18,20 +18,54 @@ const routes = [
 ];
 ---
 
-<header class='fixed left-0 top-0 h-12 w-full py-2'>
+<header
+  id='header-main'
+  class='fixed left-0 top-0 h-12 w-full text-white sm:p-2'
+>
+  <!-- bg-black/20  -->
   <div
-    class='mx-auto flex h-full max-w-screen-lg items-center justify-between rounded-md bg-zinc-300 px-2'
+    class='mx-auto flex h-full max-w-screen-lg items-center justify-between gap-4 px-2 backdrop-blur-sm sm:rounded-md'
   >
-    <span>My data</span>
-    <nav class='flex gap-2'>
-      {
-        routes.map(({ route, display }) => (
-          <a class='rounded-md bg-zinc-400 px-2 text-white' href={route}>
-            {display}
-          </a>
-        ))
-      }
+    <span>X</span>
+
+    <nav
+      id='header-tools'
+      class='fixed left-0 top-0 z-20 flex h-dvh w-full -translate-y-full flex-col items-center gap-2 bg-black/80 transition-transform duration-150 target:translate-y-0 md:static md:h-full md:translate-y-0 md:flex-row md:bg-transparent'
+    >
+      <div class='flex w-full justify-between p-1 md:hidden'>
+        <span class='p-1'>X</span>
+        <a href='#header-main' class='p-1'>Close</a>
+      </div>
+      <div
+        class='flex flex-grow flex-col items-center justify-center gap-6 text-xl md:flex-grow-0 md:flex-row md:gap-4 md:text-sm'
+      >
+        {
+          routes.map(({ route, display }) => (
+            <a class='rounded-md px-2 font-bold' href={route}>
+              {display}
+            </a>
+          ))
+        }
+        <LanguageSelector />
+      </div>
     </nav>
-    <LanguageSelector />
+    <a href='#header-tools' class='inline-flex md:hidden'>Menu</a>
   </div>
 </header>
+
+<style scoped>
+  header > div {
+    animation: header-bg-change linear forwards;
+    animation-timeline: scroll();
+    animation-range: normal 25%;
+  }
+
+  @keyframes header-bg-change {
+    from {
+      background-color: #0001;
+    }
+    to {
+      background-color: #0006;
+    }
+  }
+</style>

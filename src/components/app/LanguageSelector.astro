@@ -1,30 +1,41 @@
 ---
 import { LANG } from '@/i18n';
 import { translatePath } from '@/i18n/path.utils';
+import SvgUp from '@/components/icons/SvgUp.astro';
 
 const { url, currentLocale } = Astro;
+
+const currentLang = LANG[(currentLocale as keyof typeof LANG) ?? 'es'];
 ---
 
-<div class='group relative rounded-md bg-black/20 hover:bg-black/50'>
+<div
+  class='x-language-selector group relative rounded-md bg-black/50 text-white hover:bg-black/70'
+>
   <button
     type='button'
-    class='inline-flex items-center justify-center px-2'
+    class='inline-flex items-center justify-center gap-1 px-2'
     aria-expanded='true'
     aria-haspopup='true'
-    >{LANG[(currentLocale as keyof typeof LANG) ?? 'es']}</button
   >
+    <currentLang.flag />
+    {currentLang.display}
+    <div class='x-icon-up'>
+      <SvgUp />
+    </div>
+  </button>
   <ul class='absolute left-0 top-full hidden w-full flex-col group-hover:flex'>
     {
       Object.entries(LANG)
-        .filter(([k, v]) => k !== currentLocale)
+        .filter(([k, _]) => k !== currentLocale)
         .map(([k, v]) => (
           <li class='inline-flex w-full'>
             <a
               class='inline-flex w-full py-1'
               href={translatePath(url.pathname, k, currentLocale)}
             >
-              <span class='w-full rounded-md bg-black/20 px-2 hover:bg-black/50'>
-                {v}
+              <span class='inline-flex w-full items-center gap-1 rounded-md bg-black/50 px-2 hover:bg-black/70'>
+                <v.flag />
+                {v.display}
               </span>
             </a>
           </li>
@@ -32,3 +43,29 @@ const { url, currentLocale } = Astro;
     }
   </ul>
 </div>
+
+<style>
+  .x-language-selector > button > .x-icon-up {
+    transform: rotate(0deg);
+    transition-duration: 200ms;
+  }
+  .x-language-selector:hover > button > .x-icon-up {
+    transform: rotate(180deg);
+  }
+
+  .x-language-selector > ul {
+    transform-origin: top center;
+    animation: language-selector-show ease-out 100ms;
+  }
+
+  @keyframes language-selector-show {
+    from {
+      transform: scaleY(0);
+      opacity: 0;
+    }
+    to {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+</style>
