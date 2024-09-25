@@ -3,6 +3,7 @@ import { getI18N } from '@/i18n';
 import Layout from '@/layouts/Layout.astro';
 import HomeHero from '../views/HomeHero.astro';
 import HomeExperience from '../views/HomeExperience.astro';
+import HomeEducation from '../views/HomeEducation.astro';
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
@@ -11,6 +12,7 @@ const i18n = getI18N({ currentLocale });
 <Layout title={i18n.home_title} description={i18n.home_description}>
   <HomeHero />
   <HomeExperience />
+  <HomeEducation />
   <!-- 
   <div class='h-80 w-80 border-2 border-black bg-green-500'></div>
   <div class='h-80 w-80 border-2 border-black bg-green-500'></div>

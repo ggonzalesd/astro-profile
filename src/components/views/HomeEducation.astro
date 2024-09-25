@@ -1,0 +1,29 @@
+---
+import { getI18N } from '@/i18n';
+import { getCollection } from 'astro:content';
+import EducationCard from '../shared/EducationCard.astro';
+
+const certificates = await getCollection('certificates');
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<section class='my-32 text-zinc-800 dark:text-white'>
+  <div class='mx-auto flex w-full max-w-screen-lg flex-col gap-4 px-2'>
+    <h2 class='text-2xl font-bold'>{i18n.home_education_title}</h2>
+    <div class='grid grid-cols-2 gap-4 md:grid-cols-3'>
+      {
+        certificates.map((certificate) => {
+          const { data } = certificate;
+
+          return (
+            <div class='flex size-full items-center justify-center p-2'>
+              <EducationCard {...data} />
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

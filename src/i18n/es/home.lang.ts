@@ -14,6 +14,8 @@ const esHomeLang: typeof enHomeLang = {
   home_hero_a_cv: 'Descargar CV',
 
   home_exp_title: 'Experiencia laboral',
+
+  home_education_title: 'Formación Académica',
 };
 
 export default esHomeLang;

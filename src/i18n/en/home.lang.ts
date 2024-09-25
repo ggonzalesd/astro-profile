@@ -12,4 +12,6 @@ export default {
   home_hero_a_cv: 'Download CV',
 
   home_exp_title: 'Work experience.',
+
+  home_education_title: 'Academic Background / Education',
 };
