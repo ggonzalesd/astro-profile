@@ -1,20 +1,24 @@
 ---
+import cn from 'classnames';
 import Header from '@/components/app/Header.astro';
 import Footer from '@/components/app/Footer.astro';
 interface Props {
   title: string;
+  description?: string;
+  class?: string;
 }
 
-const { title } = Astro.props;
+const { currentLocale } = Astro;
+const { title, description, class: className } = Astro.props;
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang={currentLocale}>
   <head>
     <meta charset='UTF-8' />
-    <meta name='description' content='Astro description' />
-    <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='description' content={description} />
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -23,7 +27,7 @@ const { title } = Astro.props;
     class='flex min-h-screen flex-col justify-between bg-zinc-300 dark:bg-zinc-800'
   >
     <Header />
-    <main class='flex-grow'>
+    <main class={cn(className, 'flex-grow')}>
       <slot />
     </main>
     <Footer />

@@ -8,7 +8,7 @@ const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 ---
 
-<Layout title={i18n.home_title}>
+<Layout title={i18n.home_title} description={i18n.home_description}>
   <HomeHero />
   <HomeExperience />
   <!-- 

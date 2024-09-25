@@ -9,6 +9,8 @@ export const LANG = {
   es: { display: 'Español', flag: SvgSpain },
 };
 
+export type LANG_KEY = keyof typeof enLang;
+
 export const getI18N = ({
   currentLocale = 'en',
 }: {
