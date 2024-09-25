@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  name: string;
+  start: string;
+  end: string;
+  total: string;
+  src: ImageMetadata;
+  tags: string[];
+}
+
+const { name, src, start, end, total } = Astro.props;
+---
+
+<div class='flex'>
+  <!-- line -->
+  <div class='mr-4 flex min-h-full flex-col items-center gap-2 pt-2'>
+    <div class='size-2 rounded-full bg-sky-500 p-2 dark:bg-zinc-400'></div>
+    <div class='w-1 flex-grow rounded-md bg-sky-500 dark:bg-zinc-400'></div>
+  </div>
+  <!-- card -->
+  <div class='flex flex-grow flex-col gap-4'>
+    <span class='flex h-8 items-center'>{start} - {end} | {total}</span>
+    <div class='flex items-center gap-4'>
+      <Image
+        class='block aspect-square h-full w-16 rounded-full object-contain object-center md:hidden'
+        src={src}
+        alt={name}
+      />
+      <span class='text-lg font-bold md:text-3xl'>{name}</span>
+    </div>
+    <div class='flex gap-4'>
+      <div class='hidden items-center md:flex'>
+        <Image
+          class='aspect-square h-full min-w-48 rounded-md object-contain object-center'
+          src={src}
+          alt={name}
+        />
+      </div>
+      <div class='prose dark:prose-invert'>
+        <slot />
+      </div>
+    </div>
+  </div>
+</div>

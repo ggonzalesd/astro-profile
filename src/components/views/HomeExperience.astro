@@ -1,13 +1,35 @@
 ---
+import { getCollection } from 'astro:content';
 import { getI18N } from '@/i18n';
+import ExperienceTimeline from '../shared/ExperienceTimeline.astro';
+
+const exps = await getCollection('exp');
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 ---
 
 <section class='text-zinc-800 dark:text-white'>
-  <div class='mx-auto w-full max-w-screen-lg px-2'>
+  <div class='mx-auto flex w-full max-w-screen-lg flex-col gap-4 px-2'>
     <!-- Experiencia laboral -->
     <h2 class='text-2xl font-bold'>{i18n.home_exp_title}</h2>
+    <div class='flex flex-col gap-2'>
+      {
+        exps
+          .filter(({ data }) => data.lang === currentLocale)
+          .map(async (exp) => {
+            const { data, render } = exp;
+            const { lang, ...props } = data;
+
+            const { Content } = await render();
+
+            return (
+              <ExperienceTimeline {...props}>
+                <Content />
+              </ExperienceTimeline>
+            );
+          })
+      }
+    </div>
   </div>
 </section>
