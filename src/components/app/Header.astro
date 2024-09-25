@@ -45,7 +45,7 @@ const routes = [
       >
         {
           routes.map(({ route, display }) => (
-            <a class='rounded-md px-2 font-bold' href={route}>
+            <a class='header-link rounded-md px-2 font-bold' href={route}>
               {display}
             </a>
           ))
@@ -60,19 +60,22 @@ const routes = [
 </header>
 
 <style scoped>
+  .header-link {
+    text-shadow: 0px 0px 12px rgba(39 39 42 / 100%);
+  }
   header > div {
     animation: header-bg-change linear forwards;
-    background-color: #0002;
+    background-color: rgba(39 39 42 / 10%);
     animation-timeline: scroll();
-    animation-range: 5% 25%;
+    animation-range: 48px 240px;
   }
 
   @keyframes header-bg-change {
     from {
-      background-color: #0002;
+      background-color: rgba(39 39 42 / 10%);
     }
     to {
-      background-color: #0006;
+      background-color: rgba(39 39 42 / 100%);
     }
   }
 </style>

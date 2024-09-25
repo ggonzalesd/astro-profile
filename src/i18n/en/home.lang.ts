@@ -1,7 +1,8 @@
 export default {
-  home_title: 'Index Page',
+  home_title: "🤓 I 'm Grober Gonzales",
 
   home_hero_title: "Hi, I'm Grober Gonzales!",
+  home_hero_photo_description: 'FullStack Developer',
   home_hero_p1:
     'Full Stack Developer with experience in frontend technologies like React, Vite, Tailwind, and TypeScript, and backend with NestJS, PostgreSQL.',
   home_hero_p2:

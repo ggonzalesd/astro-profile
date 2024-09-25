@@ -1,9 +1,10 @@
 import enHomeLang from '@/i18n/en/home.lang';
 
 const esHomeLang: typeof enHomeLang = {
-  home_title: 'Página indice',
+  home_title: '🤓 Soy Grober Gonzales',
 
   home_hero_title: '¡Hola, Soy Grober Gonzales!',
+  home_hero_photo_description: 'Desarrollador FullStack',
   home_hero_p1:
     'Desarrollador Full Stack con experiencia en tecnologías frontend como React, Vite, Tailwind y TypeScript, y backend con NestJS, PostgreSQL.',
   home_hero_p2:
