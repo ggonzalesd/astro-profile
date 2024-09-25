@@ -4,6 +4,7 @@ import { getI18N } from '@/i18n';
 import LanguageSelector from './LanguageSelector.astro';
 import SvgMenu from '../icons/SvgMenu.astro';
 import SvgClose from '../icons/SvgClose.astro';
+import SvgLogo from '../icons/SvgLogo.astro';
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
@@ -28,14 +29,20 @@ const routes = [
   <div
     class='mx-auto flex h-full max-w-screen-lg items-center justify-between gap-4 px-2 backdrop-blur-sm sm:rounded-md'
   >
-    <span>Logo</span>
+    <a href={i18n.app_nav_route_home}>
+      <span class='sr-only'>{i18n.app_nav_names_home}</span>
+      <SvgLogo class='size-8 md:size-4' /></a
+    >
 
     <nav
       id='header-tools'
       class='fixed left-0 top-0 z-20 flex h-dvh w-full -translate-y-full flex-col items-center gap-2 bg-black/90 transition-transform duration-150 target:translate-y-0 md:static md:h-full md:translate-y-0 md:flex-row md:bg-transparent'
     >
       <div class='flex w-full justify-between p-1 md:hidden'>
-        <span class='p-1'>Logo</span>
+        <a class='p-1' href={i18n.app_nav_route_home}>
+          <SvgLogo class='size-8' />
+          <span class='sr-only'>Logo</span>
+        </a>
         <a href='#header-main' class='p-1'>
           <SvgClose />
         </a>

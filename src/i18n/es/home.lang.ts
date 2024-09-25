@@ -12,6 +12,8 @@ const esHomeLang: typeof enHomeLang = {
   home_hero_p2:
     'Apasionado por el desarrollo de software y de formación autodidacta, lo que me ha permitido aprender y trabajar con diversas herramientas como Docker, Linux, Git, Spring Boot y Angular. Me enfoco en crear soluciones eficientes y escalables, combinando experiencia en desarrollo web, diseño de interfaces de usuario y arquitecturas backend robustas.',
   home_hero_a_cv: 'Descargar CV',
+
+  home_exp_title: 'Experiencia laboral',
 };
 
 export default esHomeLang;

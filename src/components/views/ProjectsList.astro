@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import { getI18N } from '@/i18n';
+import ProjectCard from '@/components/shared/ProjectCard.astro';
+
+const projects = await getCollection('projects');
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<section class='mx-auto w-full max-w-screen-lg px-2 text-black dark:text-white'>
+  <span class='text-2xl'>{i18n.projects_title}</span>
+  <div class='grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8'>
+    {
+      projects
+        .filter(({ data }) => data.lang === currentLocale)
+        .map(async (project) => {
+          const {
+            data: { title, img, links },
+            render,
+          } = project;
+
+          const { Content } = await render();
+
+          return (
+            <div class='center flex size-full items-center justify-center p-2'>
+              <ProjectCard title={title} src={img} links={links}>
+                <Content />
+              </ProjectCard>
+            </div>
+          );
+        })
+    }
+  </div>
+</section>

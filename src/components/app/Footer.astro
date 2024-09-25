@@ -3,6 +3,7 @@ import { getI18N } from '@/i18n';
 import DiagonalSection from '../DiagonalSection.astro';
 import SvgLinkedin from '@/components/icons/SvgLinkedin.astro';
 import SvgGithub from '@/components/icons/SvgGithub.astro';
+import SvgLogo from '../icons/SvgLogo.astro';
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
@@ -27,9 +28,13 @@ const routes = [
       <div class='flex flex-col justify-between gap-8 md:flex-row'>
         <!-- Left -->
         <div>
-          <div class='flex justify-center p-2 text-lg font-bold'>
-            <span>Logo</span>
-          </div>
+          <a
+            href={i18n.app_nav_route_home}
+            class='flex justify-center p-2 text-lg font-bold'
+          >
+            <span class='sr-only'>{i18n.app_nav_names_home}</span>
+            <SvgLogo class='size-16' />
+          </a>
           <div class='flex w-full justify-center gap-2'>
             <a
               class='size-6'

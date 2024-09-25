@@ -1,41 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '@/layouts/Layout.astro';
 import { getI18N } from '@/i18n';
-import ProjectCard from '../shared/ProjectCard.astro';
-
-const exps = await getCollection('exps');
+import Layout from '@/layouts/Layout.astro';
+import ProjectsList from '../views/ProjectsList.astro';
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 ---
 
 <Layout title={i18n.projects_title} class='pt-12'>
-  <section
-    class='mx-auto w-full max-w-screen-lg px-2 text-black dark:text-white'
-  >
-    <span class='text-2xl'>Projects</span>
-    <div class='grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8'>
-      {
-        exps
-          .filter(({ data }) => data.lang === currentLocale)
-          .map(async (exp) => {
-            const {
-              data: { title, img, links },
-              render,
-            } = exp;
-
-            const { Content } = await render();
-
-            return (
-              <div class='center flex size-full items-center justify-center p-2'>
-                <ProjectCard title={title} src={img} links={links}>
-                  <Content />
-                </ProjectCard>
-              </div>
-            );
-          })
-      }
-    </div>
-  </section>
+  <ProjectsList />
 </Layout>
