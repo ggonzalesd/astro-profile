@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import { getI18N } from '@/i18n';
+import ProjectCard from '../shared/ProjectCard.astro';
 
 const exps = await getCollection('exps');
 
@@ -17,24 +18,20 @@ const i18n = getI18N({ currentLocale });
     <div class='grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8'>
       {
         exps
-          .filter((exp) => exp.data.lang === currentLocale)
+          .filter(({ data }) => data.lang === currentLocale)
           .map(async (exp) => {
             const {
-              data: { title },
+              data: { title, img, links },
               render,
             } = exp;
 
             const { Content } = await render();
 
             return (
-              <div class='center flex size-full items-center justify-center p-4'>
-                <article class='flex size-full rounded-md bg-transparent dark:bg-zinc-900'>
-                  <div class='aspect-square h-auto min-w-36 bg-red-100' />
-                  <div class='prose dark:prose-invert p-2'>
-                    <span class='text-lg'>{title}</span>
-                    <Content />
-                  </div>
-                </article>
+              <div class='center flex size-full items-center justify-center p-2'>
+                <ProjectCard title={title} src={img} links={links}>
+                  <Content />
+                </ProjectCard>
               </div>
             );
           })

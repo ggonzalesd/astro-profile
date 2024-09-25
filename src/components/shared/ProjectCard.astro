@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import SvgGithub from '@/components/icons/SvgGithub.astro';
+import SvgWeb from '@/components/icons/SvgWeb.astro';
+
+interface Props {
+  title: string;
+  src?: ImageMetadata;
+  links: Partial<Record<'github' | 'web', string>>;
+}
+
+const { title, src, links } = Astro.props;
+---
+
+<article
+  class='flex size-full flex-col rounded-md bg-transparent md:flex-row dark:bg-zinc-900'
+>
+  {
+    src ? (
+      <Image
+        class='aspect-square h-auto w-full object-contain object-center md:w-1/2 dark:bg-zinc-800/50'
+        src={src}
+        alt={title}
+      />
+    ) : (
+      <div class='aspect-square h-auto w-1/2 bg-red-100' />
+    )
+  }
+  <div class='prose prose-sm flex flex-col p-2 dark:prose-invert'>
+    <span class='text-lg'>{title}</span>
+    <slot />
+    <!-- <div class='mx-2 h-1 rounded-md bg-zinc-400 dark:bg-zinc-200'></div> -->
+    <div class='flex flex-grow'></div>
+    <div class='flex gap-2 pt-4'>
+      {
+        Object.entries(links).map(([k, v]) => {
+          return (
+            <a href={v} target='_blank'>
+              <span class='sr-only'>{k}</span>
+              {k === 'github' && <SvgGithub />}
+              {k === 'web' && <SvgWeb />}
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
+</article>

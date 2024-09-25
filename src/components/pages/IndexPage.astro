@@ -6,6 +6,8 @@ import HomeExperience from '../views/HomeExperience.astro';
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
+
+export const prerender = true;
 ---
 
 <Layout title={i18n.home_title} description={i18n.home_description}>

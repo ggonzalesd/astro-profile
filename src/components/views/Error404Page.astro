@@ -1,0 +1,25 @@
+---
+import { getI18N } from '@/i18n';
+import Layout from '@/layouts/Layout.astro';
+
+const { currentLocale } = Astro;
+
+const i18n = getI18N({ currentLocale });
+---
+
+<Layout
+  class='flex items-center justify-center pt-12'
+  title={i18n.app_error_404_title}
+>
+  <section
+    class='flex flex-col items-center gap-8 text-zinc-800 dark:text-white'
+  >
+    <span class='text-9xl font-bold'>404</span>
+    <span
+      >{i18n.app_error_back_to_home}
+      <a class='underline' href={i18n.app_nav_route_home}
+        >{i18n.app_nav_names_home}</a
+      ></span
+    >
+  </section>
+</Layout>
