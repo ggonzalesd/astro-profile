@@ -2,6 +2,7 @@
 import cn from 'classnames';
 import Header from '@/components/app/Header.astro';
 import Footer from '@/components/app/Footer.astro';
+import { ViewTransitions } from 'astro:transitions';
 interface Props {
   title: string;
   description?: string;
@@ -21,10 +22,11 @@ const { title, description, class: className } = Astro.props;
     <meta name='description' content={description} />
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <!-- pt-12 -->
   <body
-    class='flex min-h-screen flex-col justify-between bg-zinc-300 dark:bg-zinc-800'
+    class='flex min-h-screen flex-col justify-between bg-zinc-300 dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-950'
   >
     <Header />
     <main class={cn(className, 'flex-grow')}>

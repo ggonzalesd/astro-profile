@@ -15,6 +15,10 @@ const routes = [
     display: i18n.app_nav_names_home,
   },
   {
+    route: i18n.app_nav_route_about,
+    display: i18n.app_nav_names_about,
+  },
+  {
     route: i18n.app_nav_route_projects,
     display: i18n.app_nav_names_projects,
   },
@@ -23,7 +27,7 @@ const routes = [
 
 <header
   id='header-main'
-  class='fixed left-0 top-0 h-12 w-full text-white sm:p-2'
+  class='fixed left-0 top-0 z-50 h-12 w-full text-white sm:p-2'
 >
   <!-- bg-black/20  -->
   <div
@@ -36,7 +40,7 @@ const routes = [
 
     <nav
       id='header-tools'
-      class='fixed left-0 top-0 z-20 flex h-dvh w-full -translate-y-full flex-col items-center gap-2 bg-black/90 transition-transform duration-150 target:translate-y-0 md:static md:h-full md:translate-y-0 md:flex-row md:bg-transparent'
+      class='fixed left-0 top-0 flex h-dvh w-full -translate-y-full flex-col items-center gap-2 bg-black/90 transition-transform duration-150 target:translate-y-0 md:static md:h-full md:translate-y-0 md:flex-row md:bg-transparent'
     >
       <div class='flex w-full justify-between p-1 md:hidden'>
         <a class='p-1' href={i18n.app_nav_route_home}>

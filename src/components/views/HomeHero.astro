@@ -6,6 +6,7 @@ import SvgDownload from '@/components/icons/SvgDownload.astro';
 import SvgPhone from '@/components/icons/SvgPhone.astro';
 import SvgMail from '@/components/icons/SvgMail.astro';
 import imageProfile from '@/assets/profile/profile-01-grober-gonzales.jpeg';
+import ProfileItem from '../ProfileItem.astro';
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
@@ -15,16 +16,8 @@ const i18n = getI18N({ currentLocale });
   <div
     class='mx-auto flex w-full max-w-screen-lg flex-col gap-8 px-2 py-4 md:grid md:grid-cols-2 md:py-8'
   >
-    <div class='mx-auto'>
-      <picture>
-        <Image src={imageProfile} alt='Grober Gonzales' />
-      </picture>
-      <div class='flex flex-col text-center'>
-        <span class='text-3xl font-bold text-sky-50'>Grober Gonzales</span>
-        <span class='text-sky-200'>{i18n.home_hero_photo_description}</span>
-      </div>
-    </div>
-    <div class='mx-auto flex flex-col gap-3 leading-6 text-white'>
+    <ProfileItem />
+    <div class='mx-auto flex flex-col gap-3 leading-8 text-white'>
       <h1 class='text-2xl dark:text-sky-300'>{i18n.home_hero_title}</h1>
       <p>
         {i18n.home_hero_p1}
@@ -59,14 +52,3 @@ const i18n = getI18N({ currentLocale });
   </div>
 </section>
 <MiddleSection class='text-sky-600 dark:text-sky-800' />
-
-<style scoped>
-  picture > img {
-    border-radius: 100%;
-    aspect-ratio: 1 / 1;
-    width: 300px;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-  }
-</style>

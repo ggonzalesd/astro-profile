@@ -1,0 +1,33 @@
+---
+import { getI18N } from '@/i18n';
+import { Image } from 'astro:assets';
+import imageProfile from '@/assets/profile/profile-01-grober-gonzales.jpeg';
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<div class='mx-auto flex flex-col gap-4'>
+  <picture class='z-10 flex justify-center'>
+    <Image
+      transition:name='image-profile'
+      class='w-9/12 md:w-[360px]'
+      src={imageProfile}
+      alt='Grober Gonzales'
+    />
+  </picture>
+  <div class='flex flex-col text-center'>
+    <span class='text-3xl font-bold text-sky-50'>Grober Gonzales</span>
+    <span class='text-sky-200'>{i18n.home_hero_photo_description}</span>
+  </div>
+</div>
+
+<style scoped>
+  picture > img {
+    border-radius: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+  }
+</style>
