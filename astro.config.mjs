@@ -14,6 +14,6 @@ export default defineConfig({
   },
 
   integrations: [tailwind()],
-  output: 'server',
+  output: 'hybrid',
   adapter: vercel(),
 });
