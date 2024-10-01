@@ -1,5 +1,5 @@
 export default {
-  home_title: "🤓 I 'm Grober Gonzales",
+  home_title: "I 'm Grober Gonzales",
   home_description:
     'Grober Gonzales, Full Stack Developer with experience in frontend technologies like React, Vite, Tailwind, and TypeScript, and backend with NestJS, PostgreSQL.',
 
