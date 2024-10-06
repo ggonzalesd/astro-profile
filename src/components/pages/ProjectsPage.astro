@@ -5,8 +5,9 @@ import ProjectsList from '../views/ProjectsList.astro';
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
+type TypeLang = keyof typeof i18n;
 ---
 
-<Layout title={i18n.projects_title} class='pt-12'>
+<Layout title={i18n['projects_title' as TypeLang]} class='pt-12'>
   <ProjectsList />
 </Layout>
