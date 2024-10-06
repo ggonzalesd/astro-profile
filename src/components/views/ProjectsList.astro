@@ -3,43 +3,50 @@ import { getCollection } from 'astro:content';
 import { getI18N } from '@/i18n';
 import ProjectCard from '@/components/shared/ProjectCard.astro';
 
-const projects = await getCollection('projects');
-
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 type LangKey = keyof typeof i18n;
+
+const projects = await getCollection('projects');
+const filtered = projects
+  .filter(({ slug }) => slug.startsWith(currentLocale ?? 'en'))
+  .sort((p1, p2) => {
+    const p1Value =
+      typeof p1.data.order === 'number' ? p1.data.order : Infinity;
+    const p2Value =
+      typeof p2.data.order === 'number' ? p2.data.order : Infinity;
+    return p1Value - p2Value;
+  });
 ---
 
 <section class='mx-auto w-full max-w-screen-lg px-2 text-black dark:text-white'>
   <span class='text-2xl'>{i18n['projects_title' as LangKey]}</span>
   <div class='grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8'>
     {
-      projects
-        .filter(({ slug }) => slug.startsWith(currentLocale ?? 'en'))
-        .map(async (project) => {
-          const {
-            data: { title, img, links },
-            render,
-            slug,
-          } = project;
+      filtered.map(async (project) => {
+        const {
+          data: { title, img, links, description },
+          slug,
+        } = project;
 
-          const { Content } = await render();
+        const link =
+          i18n[
+            ('projects_route_' +
+              slug.split('/')[1].replace('-', '_')) as LangKey
+          ];
 
-          const link =
-            i18n[
-              ('projects_route_' +
-                slug.split('/')[1].replace('-', '_')) as LangKey
-            ];
-
-          return (
-            <div class='center flex size-full items-center justify-center p-2'>
-              <ProjectCard title={title} src={img} links={links}>
-                <Content />
-                <a href={link}>Read more</a>
-              </ProjectCard>
-            </div>
-          );
-        })
+        return (
+          <div class='center flex size-full items-center justify-center p-2'>
+            <ProjectCard
+              title={title}
+              src={img}
+              links={links}
+              link={link}
+              description={description}
+            />
+          </div>
+        );
+      })
     }
   </div>
 </section>

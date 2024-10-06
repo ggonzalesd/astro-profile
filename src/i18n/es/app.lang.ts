@@ -11,6 +11,7 @@ const esAppLang: typeof enAppLang = {
   app_footer_site_map: 'Mapa Web',
   app_error_back_to_home: 'Regresa a ',
   app_error_404_title: '😥 No Encontrado',
+  app_readmore: 'Leer más',
 };
 
 export default esAppLang;

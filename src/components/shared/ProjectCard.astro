@@ -2,14 +2,21 @@
 import { Image } from 'astro:assets';
 import SvgGithub from '@/components/icons/SvgGithub.astro';
 import SvgWeb from '@/components/icons/SvgWeb.astro';
+import SvgNpm from '@/components/icons/SvgNpm.astro';
+import { getI18N } from '@/i18n';
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 
 interface Props {
   title: string;
   src?: ImageMetadata;
-  links: Partial<Record<'github' | 'web', string>>;
+  links: Partial<Record<'github' | 'web' | 'npm', string>>;
+  description: string;
+  link: string;
 }
 
-const { title, src, links } = Astro.props;
+const { title, src, links, description, link } = Astro.props;
 ---
 
 <article
@@ -18,6 +25,7 @@ const { title, src, links } = Astro.props;
   {
     src ? (
       <Image
+        transition:name={src.src}
         class='aspect-square h-auto w-full object-contain object-center md:w-1/2 dark:bg-zinc-800/50'
         src={src}
         alt={title}
@@ -28,9 +36,12 @@ const { title, src, links } = Astro.props;
   }
   <div class='prose prose-sm flex flex-col p-2 dark:prose-invert'>
     <span class='text-lg'>{title}</span>
-    <slot />
+    <!-- <slot /> -->
     <!-- <div class='mx-2 h-1 rounded-md bg-zinc-400 dark:bg-zinc-200'></div> -->
-    <div class='flex flex-grow'></div>
+    <div class='flex flex-grow'>
+      {description}
+    </div>
+    <a href={link}>{i18n.app_readmore}</a>
     <div class='flex gap-2 pt-4'>
       {
         Object.entries(links).map(([k, v]) => {
@@ -39,6 +50,7 @@ const { title, src, links } = Astro.props;
               <span class='sr-only'>{k}</span>
               {k === 'github' && <SvgGithub />}
               {k === 'web' && <SvgWeb />}
+              {k === 'npm' && <SvgNpm />}
             </a>
           );
         })

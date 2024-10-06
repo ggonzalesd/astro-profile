@@ -27,9 +27,11 @@ const exp = defineCollection({
 const projects = defineCollection({
   schema: ({ image }) =>
     z.object({
+      order: z.number().optional(),
       title: z.string(),
       img: image(),
-      links: z.record(z.enum(['github', 'web']), z.string().optional()),
+      description: z.string(),
+      links: z.record(z.enum(['github', 'web', 'npm']), z.string().optional()),
     }),
 });
 

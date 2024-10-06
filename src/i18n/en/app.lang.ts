@@ -9,4 +9,5 @@ export default {
   app_footer_site_map: 'Site Map',
   app_error_back_to_home: 'Back to ',
   app_error_404_title: '😥 Not Found',
+  app_readmore: 'Read More',
 };
