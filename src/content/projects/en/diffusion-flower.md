@@ -1,5 +1,4 @@
 ---
-lang: en
 title: Diffusion Flower
 img: '@/assets/projects/diffusion-flower.png'
 links: { github: 'https://github.com/ggonzalesd/diffusion-flowers' }

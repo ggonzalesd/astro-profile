@@ -1,5 +1,4 @@
 ---
-lang: en
 title: Classname Theme
 img: '@/assets/projects/classname-theme.png'
 links:

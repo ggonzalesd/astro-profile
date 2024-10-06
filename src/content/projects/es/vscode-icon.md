@@ -1,5 +1,4 @@
 ---
-lang: es
 title: Cyberpunk Vscode Icon
 img: '@/assets/projects/cyberpunk-icons.png'
 links: { github: 'https://github.com/ggonzalesd/cyberpunk-vscode-icon' }

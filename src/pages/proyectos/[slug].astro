@@ -1,0 +1,19 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import ProjectsSlugPage from '@/components/pages/ProjectsSlugPage.astro';
+
+export const getStaticPaths = (async () => {
+  const projects = await getCollection('projects');
+  const paths = projects
+    .filter((p) => p.slug.startsWith('es'))
+    .map(({ slug }) => ({
+      params: {
+        slug: slug.split('/')[1],
+      },
+    }));
+  return paths;
+}) satisfies GetStaticPaths;
+---
+
+<ProjectsSlugPage />

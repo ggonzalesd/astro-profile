@@ -1,5 +1,4 @@
 ---
-lang: es
 title: Simple UI
 img: '@/assets/projects/simpleui.png'
 links:

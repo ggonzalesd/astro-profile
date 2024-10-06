@@ -1,5 +1,4 @@
 ---
-lang: es
 title: Restaurant Website
 img: '@/assets/projects/restaurant.png'
 links:

@@ -1,5 +1,4 @@
 ---
-lang: en
 title: Unitable
 img: '@/assets/projects/unitable.api.png'
 links: { github: 'https://github.com/ggonzalesd/UniTable' }
