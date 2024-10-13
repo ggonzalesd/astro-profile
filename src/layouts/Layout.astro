@@ -20,9 +20,26 @@ const { title, description, class: className } = Astro.props;
     <link rel='icon' type='image/svg+xml' href='/rocket.svg' />
     <link rel='sitemap' href='/sitemap-index.xml' />
     <meta name='viewport' content='width=device-width' />
-    <meta name='description' content={description} />
     <meta name='generator' content={Astro.generator} />
+
     <title>{title}</title>
+    <meta name='description' content={description} />
+
+    <!-- Facebook Meta Tags -->
+    <meta property='og:url' content='https://ggonzalesd.vercel.app/' />
+    <meta property='og:type' content='website' />
+    <meta property='og:title' content='Grober Gonzales' />
+    <meta property='og:description' content={description} />
+    <meta property='og:image' content={import.meta.env.SITE + '/photo.jpeg'} />
+
+    <!-- Twitter Meta Tags -->
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta property='twitter:domain' content='ggonzalesd.vercel.app' />
+    <meta property='twitter:url' content='https://ggonzalesd.vercel.app/' />
+    <meta name='twitter:title' content='Grober Gonzales' />
+    <meta name='twitter:description' content={description} />
+    <meta name='twitter:image' content={import.meta.env.SITE + '/photo.jpeg'} />
+
     <ViewTransitions />
   </head>
   <!-- pt-12 -->
