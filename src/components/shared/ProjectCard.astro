@@ -20,13 +20,13 @@ const { title, src, links, description, link } = Astro.props;
 ---
 
 <article
-  class='flex size-full flex-col rounded-md bg-transparent md:flex-row dark:bg-zinc-900'
+  class='flex size-full flex-col overflow-hidden rounded-md bg-transparent dark:bg-zinc-900'
 >
   {
     src ? (
       <Image
         transition:name={src.src}
-        class='aspect-square h-auto w-full object-contain object-center md:w-1/2 dark:bg-zinc-800/50'
+        class='aspect-square h-52 w-full object-cover object-center dark:bg-zinc-800/50'
         src={src}
         alt={title}
       />
