@@ -1,4 +1,5 @@
 ---
+order: 1
 lang: en
 src: '@/assets/exp/agiletech.jpg'
 name: Grupo Agiletech Peru Enterprise Solutions S.A.C

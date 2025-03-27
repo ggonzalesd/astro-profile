@@ -16,6 +16,7 @@ const i18n = getI18N({ currentLocale });
     <div class='flex flex-col gap-2'>
       {
         exps
+          .toSorted((a, b) => b.data.order - a.data.order)
           .filter(({ data }) => data.lang === currentLocale)
           .map(async (exp) => {
             const { data, render } = exp;

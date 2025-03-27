@@ -14,6 +14,7 @@ const certificates = defineCollection({
 const exp = defineCollection({
   schema: ({ image }) =>
     z.object({
+      order: z.number(),
       lang: z.enum(['en', 'es']),
       src: image(),
       name: z.string(),
