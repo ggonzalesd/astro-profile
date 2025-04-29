@@ -1,13 +1,18 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 
 import sitemap from '@astrojs/sitemap';
 
 import vercel from '@astrojs/vercel';
 
+import tailwindcss from '@tailwindcss/vite';
+
 // https://astro.build/config
 export default defineConfig({
+  build: {
+    assets: 'static',
+  },
+
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'en'],
@@ -17,7 +22,11 @@ export default defineConfig({
   },
 
   site: 'https://ggonzalesd.vercel.app',
-  integrations: [tailwind(), sitemap()],
+  integrations: [sitemap()],
   output: 'static',
   adapter: vercel(),
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
