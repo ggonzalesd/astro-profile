@@ -1,8 +1,9 @@
 ---
-import Layout from '@/layouts/Layout.astro';
 import { AstroError } from 'astro/errors';
 import { Image } from 'astro:assets';
 import { getEntry } from 'astro:content';
+
+import Layout from '@/layouts/Layout.astro';
 import SvgGithub from '../icons/SvgGithub.astro';
 import SvgWeb from '../icons/SvgWeb.astro';
 import SvgNpm from '../icons/SvgNpm.astro';
@@ -23,7 +24,7 @@ const { Content } = await project.render();
 
 <Layout title={`Project ${slug}`}>
   <section
-    class='mx-auto flex w-full max-w-screen-lg flex-col items-center gap-8 px-2 pt-14 dark:prose-invert'
+    class='dark:prose-invert mx-auto flex w-full max-w-screen-lg flex-col items-center gap-8 px-2 pt-14'
   >
     <article
       class='prose prose-invert flex flex-col items-center gap-4 rounded-md bg-zinc-800 p-2 md:flex-row'
@@ -57,7 +58,7 @@ const { Content } = await project.render();
       <div class='h-[1px] w-full bg-zinc-400/50'></div>
     </div>
     <article
-      class='prose w-full text-ellipsis text-wrap break-all dark:prose-invert'
+      class='prose dark:prose-invert w-full text-wrap break-all text-ellipsis'
     >
       <Content />
     </article>

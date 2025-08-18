@@ -1,6 +1,7 @@
 ---
 import { LANG } from '@/i18n';
 import { translatePath } from '@/i18n/path.utils';
+
 import SvgUp from '@/components/icons/SvgUp.astro';
 
 const { url, currentLocale } = Astro;
@@ -23,7 +24,7 @@ const currentLang = LANG[(currentLocale as keyof typeof LANG) ?? 'es'];
       <SvgUp />
     </div>
   </button>
-  <ul class='absolute left-0 top-full hidden w-full flex-col group-hover:flex'>
+  <ul class='absolute top-full left-0 hidden w-full flex-col group-hover:flex'>
     {
       Object.entries(LANG)
         .filter(([k, _]) => k !== currentLocale)

@@ -2,6 +2,7 @@
 import { getI18N } from '@/i18n';
 
 import LanguageSelector from './LanguageSelector.astro';
+
 import SvgMenu from '../icons/SvgMenu.astro';
 import SvgClose from '../icons/SvgClose.astro';
 import SvgLogo from '../icons/SvgLogo.astro';
@@ -27,7 +28,7 @@ const routes = [
 
 <header
   id='header-main'
-  class='fixed left-0 top-0 z-50 h-12 w-full text-white sm:p-2'
+  class='fixed top-0 left-0 z-50 h-12 w-full text-white sm:p-2'
 >
   <!-- bg-black/20  -->
   <div
@@ -40,7 +41,7 @@ const routes = [
 
     <nav
       id='header-tools'
-      class='fixed left-0 top-0 flex h-dvh w-full -translate-y-full flex-col items-center gap-2 bg-black/90 transition-transform duration-150 target:translate-y-0 md:static md:h-full md:translate-y-0 md:flex-row md:bg-transparent'
+      class='fixed top-0 left-0 flex h-dvh w-full -translate-y-full flex-col items-center gap-2 bg-black/90 transition-transform duration-150 target:translate-y-0 md:static md:h-full md:translate-y-0 md:flex-row md:bg-transparent'
     >
       <div class='flex w-full justify-between p-1 md:hidden'>
         <a class='p-1' href={i18n.app_nav_route_home}>
