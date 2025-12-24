@@ -17,5 +17,29 @@ const { class: classname } = Astro.props;
     fill='currentColor'
     fill-opacity='1'
     d='M0,64L40,58.7C80,53,160,43,240,37.3C320,32,400,32,480,58.7C560,85,640,139,720,138.7C800,139,880,85,960,106.7C1040,128,1120,224,1200,240C1280,256,1360,192,1400,160L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z'
-  ></path>
+  >
+  </path>
 </svg>
+
+<style>
+  @keyframes parallax {
+    from {
+      transform: scaleY(1);
+    }
+    to {
+      transform: scaleY(2);
+    }
+  }
+
+  svg {
+    transform-origin: top;
+    animation-name: parallax;
+    animation-timeline: view();
+    animation-range: entry 0% exit 50%;
+
+    animation-duration: 1s; /* requerido aunque lo controle el scroll */
+
+    animation-timing-function: cubic-bezier(0.5, -0.35, 0.58, 1.4);
+    animation-fill-mode: both;
+  }
+</style>
