@@ -9,7 +9,7 @@ type LangKey = keyof typeof i18n;
 
 const projects = await getCollection('projects');
 const filtered = projects
-  .filter(({ slug }) => slug.startsWith(currentLocale ?? 'en'))
+  .filter(({ filePath }) => filePath?.includes(`/${currentLocale ?? 'en'}/`))
   .sort((p1, p2) => {
     const p1Value =
       typeof p1.data.order === 'number' ? p1.data.order : Infinity;
@@ -26,13 +26,17 @@ const filtered = projects
       filtered.map(async (project) => {
         const {
           data: { title, img, links, description },
-          slug,
+          filePath,
         } = project;
+
+        const slug = filePath?.split('/').slice(3).join('/') as string;
 
         const link =
           i18n[
-            ('projects_route_' +
-              slug.split('/')[1].replace('-', '_')) as LangKey
+            ('projects_route_' + slug.split('/')[1].replace('-', '_')).replace(
+              '.md',
+              '',
+            ) as LangKey
           ];
 
         return (

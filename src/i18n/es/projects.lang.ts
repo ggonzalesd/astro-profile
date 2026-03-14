@@ -4,8 +4,8 @@ import { getCollection } from 'astro:content';
 
 const projects = await getCollection('projects');
 const slugs = projects
-  .filter(({ slug }) => slug.startsWith('es'))
-  .map((p) => p.slug.split('/')[1]);
+  .filter(({ filePath }) => filePath?.includes('/es/'))
+  .map((p) => p.filePath?.split('/es/')[1].replace('.md', '')) as string[];
 
 const projectPaths = slugs.map((p) => [
   'projects_route_' + p.replace('-', '_'),

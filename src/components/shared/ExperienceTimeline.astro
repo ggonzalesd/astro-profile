@@ -36,13 +36,12 @@ const { name, src, start, end, total } = Astro.props;
       <span class='text-lg font-bold md:text-3xl'>{name}</span>
     </div>
     <div class='flex gap-4'>
-      <div class='hidden items-center md:flex'>
-        <Image
-          class='aspect-square h-full min-w-48 rounded-md object-contain object-center'
-          src={src}
-          alt={name}
-        />
-      </div>
+      <Image
+        class='aspect-square h-full w-48 rounded-md object-contain object-center'
+        src={src}
+        alt={name}
+      />
+      <div class='hidden items-center md:flex'></div>
       <div class='prose dark:prose-invert'>
         <slot />
       </div>

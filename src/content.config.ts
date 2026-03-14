@@ -1,17 +1,20 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { glob, file } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const certificates = defineCollection({
+  loader: glob({ base: './src/content/certificates', pattern: '**/*.json' }),
   schema: ({ image }) =>
     z.object({
       file: z.string(),
-      url: z.string().url(),
+      url: z.url(),
       src: image(),
       name: z.string(),
     }),
-  type: 'data',
 });
 
 const exp = defineCollection({
+  loader: glob({ base: './src/content/exp', pattern: '**/*.md' }),
   schema: ({ image }) =>
     z.object({
       order: z.number(),
@@ -26,6 +29,7 @@ const exp = defineCollection({
 });
 
 const projects = defineCollection({
+  loader: glob({ base: './src/content/projects', pattern: '**/*.md' }),
   schema: ({ image }) =>
     z.object({
       order: z.number().optional(),

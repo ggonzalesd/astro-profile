@@ -5,14 +5,24 @@ import ProjectsSlugPage from '@/components/pages/ProjectsSlugPage.astro';
 
 export const getStaticPaths = (async () => {
   const projects = await getCollection('projects');
-  const paths = projects
-    .filter((p) => p.slug.startsWith('es'))
+
+  return projects
+    .map((p) => ({
+      ...p,
+      slug: p.filePath
+        ?.split('/')
+        .slice(3)
+        .join('/')
+        .replace('.md', '') as string,
+    }))
+    .filter((p) => {
+      return p.slug.startsWith('es');
+    })
     .map(({ slug }) => ({
       params: {
         slug: slug.split('/')[1],
       },
     }));
-  return paths;
 }) satisfies GetStaticPaths;
 ---
 

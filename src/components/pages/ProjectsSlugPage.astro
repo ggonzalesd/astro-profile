@@ -7,6 +7,7 @@ import Layout from '@/layouts/Layout.astro';
 import SvgGithub from '../icons/SvgGithub.astro';
 import SvgWeb from '../icons/SvgWeb.astro';
 import SvgNpm from '../icons/SvgNpm.astro';
+import { render } from 'astro:content';
 
 const { slug } = Astro.params;
 const { currentLocale } = Astro;
@@ -19,7 +20,9 @@ if (!project) {
 
 const { data } = project;
 
-const { Content } = await project.render();
+const entry = await getEntry('projects', currentLocale + '/' + slug);
+
+const { Content } = entry ? await render(entry) : { Content: null };
 ---
 
 <Layout title={`Project ${slug}`}>
@@ -60,7 +63,7 @@ const { Content } = await project.render();
     <article
       class='prose dark:prose-invert w-full text-wrap break-all text-ellipsis'
     >
-      <Content />
+      {Content ? <Content /> : <span>No content available.</span>}
     </article>
   </section>
 </Layout>

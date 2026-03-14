@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import { getI18N } from '@/i18n';
 import ExperienceTimeline from '../shared/ExperienceTimeline.astro';
+import { getEntry } from 'astro:content';
+import { render } from 'astro:content';
 
 const exps = await getCollection('exp');
 
@@ -19,14 +21,16 @@ const i18n = getI18N({ currentLocale });
           .toSorted((a, b) => b.data.order - a.data.order)
           .filter(({ data }) => data.lang === currentLocale)
           .map(async (exp) => {
-            const { data, render } = exp;
+            const { data, collection, id } = exp;
             const { lang, ...props } = data;
 
-            const { Content } = await render();
+            const entry = await getEntry(collection, id);
+
+            const { Content } = entry ? await render(entry) : { Content: null };
 
             return (
               <ExperienceTimeline {...props}>
-                <Content />
+                {Content ? <Content /> : null}
               </ExperienceTimeline>
             );
           })
